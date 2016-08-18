@@ -1,5 +1,7 @@
 package com.gojuno.hexgridgeo;
 
+import com.gojuno.hexgrid.Point;
+
 public class ProjectionNoOp implements Projection {
     public ProjectionNoOp() {
     }
@@ -10,13 +12,13 @@ public class ProjectionNoOp implements Projection {
     }
 
     @Override
-    public com.gojuno.hexgrid.Point geoToPoint(Point geoPoint) {
-        return new com.gojuno.hexgrid.Point(geoPoint.getLon(), geoPoint.getLat());
+    public Point geoToPoint(PointGeo geoPoint) {
+        return new Point(geoPoint.getLon(), geoPoint.getLat());
     }
 
     @Override
-    public Point pointToGeo(com.gojuno.hexgrid.Point point) {
-        return new Point(point.getX(), point.getY());
+    public PointGeo pointToGeo(Point point) {
+        return new PointGeo(point.getX(), point.getY());
     }
 
     @Override

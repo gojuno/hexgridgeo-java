@@ -1,7 +1,9 @@
 package com.gojuno.hexgridgeo;
 
+import com.gojuno.hexgrid.Point;
+
 public interface Projection {
     String getName();
-    com.gojuno.hexgrid.Point geoToPoint(Point geoPoint);
-    Point pointToGeo(com.gojuno.hexgrid.Point point);
+    Point geoToPoint(PointGeo geoPoint);
+    PointGeo pointToGeo(Point point);
 }

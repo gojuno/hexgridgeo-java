@@ -1,10 +1,10 @@
 package com.gojuno.hexgridgeo;
 
-public class Point {
+public class PointGeo {
     private double lon;
     private double lat;
 
-    public Point(double lon, double lat) {
+    public PointGeo(double lon, double lat) {
         this.lon = lon;
         this.lat = lat;
     }
@@ -19,7 +19,7 @@ public class Point {
 
     @Override
     public String toString() {
-        return String.format("point{lon: %f, lat: %f}", lon, lat);
+        return String.format("pointgeo{lon: %f, lat: %f}", lon, lat);
     }
 
     @Override
@@ -27,10 +27,10 @@ public class Point {
         if (obj == null) {
             return false;
         }
-        if (!Point.class.isAssignableFrom(obj.getClass())) {
+        if (!PointGeo.class.isAssignableFrom(obj.getClass())) {
             return false;
         }
-        Point other = (Point)obj;
+        PointGeo other = (PointGeo)obj;
 
         return other.lon == lon && other.lat == lat;
     }
