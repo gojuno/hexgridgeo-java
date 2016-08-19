@@ -8,12 +8,11 @@ import static org.junit.Assert.*;
 public class ProjectionAEPTest {
     @Test
     public void testSimple() {
-        Projection projection = new ProjectionAEP();
         PointGeo geoPoint = new PointGeo(-73.0, 40.0);
-        Point point = projection.geoToPoint(geoPoint);
+        Point point = ProjectionAEP.INSTANCE.geoToPoint(geoPoint);
         assertEquals(-0.83453, point.getX(), 0.00001);
         assertEquals(-0.25514, point.getY(), 0.00001);
-        PointGeo recodedGeoPoint = projection.pointToGeo(point);
+        PointGeo recodedGeoPoint = ProjectionAEP.INSTANCE.pointToGeo(point);
         assertEquals(geoPoint.getLon(), recodedGeoPoint.getLon(), 0.00001);
         assertEquals(geoPoint.getLat(), recodedGeoPoint.getLat(), 0.00001);
     }

@@ -13,32 +13,32 @@ public class HexGridGeo {
     }
 
     public long hexToCode(Hex hex) {
-        return this.hexGrid.hexToCode(hex);
+        return hexGrid.hexToCode(hex);
     }
 
     public Hex hexFromCode(long code) {
-        return this.hexGrid.hexFromCode(code);
+        return hexGrid.hexFromCode(code);
     }
 
     public Hex hexAt(PointGeo geoPoint) {
-        return this.hexGrid.hexAt(this.projection.geoToPoint(geoPoint));
+        return hexGrid.hexAt(projection.geoToPoint(geoPoint));
     }
 
     public PointGeo hexCenter(Hex hex) {
-        return this.projection.pointToGeo(this.hexGrid.hexCenter(hex));
+        return projection.pointToGeo(hexGrid.hexCenter(hex));
     }
 
     public PointGeo[] hexCorners(Hex hex) {
-        Point[] points = this.hexGrid.hexCorners(hex);
+        Point[] points = hexGrid.hexCorners(hex);
         PointGeo[] geoPoints = new PointGeo[points.length];
         for (int i = 0; i < points.length; i++) {
-            geoPoints[i] = this.projection.pointToGeo(points[i]);
+            geoPoints[i] = projection.pointToGeo(points[i]);
         }
         return geoPoints;
     }
 
     public Hex[] hexNeighbors(Hex hex, int layers) {
-        return this.hexGrid.hexNeighbors(hex, layers);
+        return hexGrid.hexNeighbors(hex, layers);
     }
 
     public Region createRegion(PointGeo[] geometry) {
@@ -46,6 +46,24 @@ public class HexGridGeo {
         for (int i = 0; i < geometry.length; i++) {
             points[i] = this.projection.geoToPoint(geometry[i]);
         }
-        return this.hexGrid.createRegion(points);
+        return hexGrid.createRegion(points);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("hexgrid_geo{hexgrid: %s, projection: %s}", hexGrid.toString(), projection.toString());
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (!HexGridGeo.class.isAssignableFrom(obj.getClass())) {
+            return false;
+        }
+        HexGridGeo other = (HexGridGeo)obj;
+
+        return other.hexGrid.equals(hexGrid) && other.projection.equals(projection);
     }
 }

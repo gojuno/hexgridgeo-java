@@ -3,7 +3,9 @@ package com.gojuno.hexgridgeo;
 import com.gojuno.hexgrid.Point;
 
 public class ProjectionAEP implements Projection {
-    public ProjectionAEP() {
+    public static final Projection INSTANCE = new ProjectionAEP();
+
+    private ProjectionAEP() {
     }
 
     @Override

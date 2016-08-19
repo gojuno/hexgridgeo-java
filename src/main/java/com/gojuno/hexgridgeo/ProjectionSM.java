@@ -3,10 +3,11 @@ package com.gojuno.hexgridgeo;
 import com.gojuno.hexgrid.Point;
 
 public class ProjectionSM implements Projection {
+    public static final Projection INSTANCE = new ProjectionSM();
     private static final double EARTH_CIRCUMFERENCE = 40075016.685578488;
     private static final double EARTH_METERS_PER_DEGREE = 111319.49079327358;
 
-    public ProjectionSM() {
+    private ProjectionSM() {
     }
 
     @Override

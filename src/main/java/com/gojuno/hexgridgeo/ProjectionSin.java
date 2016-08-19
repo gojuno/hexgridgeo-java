@@ -3,9 +3,10 @@ package com.gojuno.hexgridgeo;
 import com.gojuno.hexgrid.Point;
 
 public class ProjectionSin implements Projection {
+    public static final Projection INSTANCE = new ProjectionSin();
     private static final double EARTH_CIRCUMFERENCE = 40075016.685578488;
 
-    public ProjectionSin() {
+    private ProjectionSin() {
     }
 
     @Override

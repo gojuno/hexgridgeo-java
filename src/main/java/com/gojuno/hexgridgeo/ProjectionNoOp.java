@@ -3,7 +3,9 @@ package com.gojuno.hexgridgeo;
 import com.gojuno.hexgrid.Point;
 
 public class ProjectionNoOp implements Projection {
-    public ProjectionNoOp() {
+    public static final Projection INSTANCE = new ProjectionNoOp();
+
+    private ProjectionNoOp() {
     }
 
     @Override
